@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="~/js/echarts/echarts-all.js"></script>
+    <script src="~/js/echarts/infographic.js"></script>
+    <link href="~/css/framework-font.css" rel="stylesheet" />
+    <link href="~/css/framework-ui.css?v=1.0.0.5" rel="stylesheet" />
+    <script src="~/js/jquery/jquery-2.1.1.min.js"></script>
+    <link href="~/css/framework-theme.css" rel="stylesheet" />
+    <link href="~/js/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/framework-theme.css" rel="stylesheet" />
+    <script src="~/js/charts/Chart.js"></script>
+    <script src="~/js/framework-ui.js?v=1.0.0.12"></script>
+
+    <script src="~/js/bootstrap/bootstrap.js"></script>
+    <link href="~/js/select2/select2.min.css" rel="stylesheet" />
+    <script src="~/js/select2/select2.min.js"></script>
+    <script src="~/js/datepicker/WdatePicker.js"></script>
+
+    <script>
+        $(function () {
+            //initControl();
+            //loadGauge();
+            //$("#Mes_Line").on("select2:select", function () {
+            //    var data = $(this).val();
+            //    loadGauge();
+            //});
+            //setInterval(loadGauge(), 30 * 60 * 1000);
+        });
+        function initControl() {
+            $("#Mes_Line").bindSelect({
+                url: "/MESConfig/MESLine/GetList",
+                id: "TC_WMF01",
+                text: "TC_WMF02"
+            });
+        }
+
+        function loadGauge() {
+            //时间开动率
+            var myChartd = echarts.init(document.getElementById('maind'));
+            optionTimed = {
+                series: [
+                    {
+                        name: '合格率',
+                        type: 'gauge',
+                        splitNumber: 10,       // 分割段数，默认为5
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                                width: 10
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            splitNumber: 10,   // 每份split细分多少段
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            show: true,        // 默认显示，属性show控制显示与否
+                            length: 30,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+
+                        detail: {
+                            formatter: '{value}%',
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto',
+                                fontWeight: 'bolder',
+                                fontSize: 20
+                            }
+                        },
+                        data: [{ value: 0 }]
+                    }
+                ]
+            };
+            myChartd.setOption(optionTimed);
+            //时间开动率
+            var myCharta = echarts.init(document.getElementById('maina'));
+            optionTimea = {
+                series: [
+                    {
+                        name: '时间开动率',
+                        type: 'gauge',
+                        splitNumber: 10,       // 分割段数，默认为5
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                                width: 10
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            splitNumber: 10,   // 每份split细分多少段
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            show: true,        // 默认显示，属性show控制显示与否
+                            length: 30,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+
+                        detail: {
+                            formatter: '{value}%',
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto',
+                                fontWeight: 'bolder',
+                                fontSize: 20
+                            }
+                        },
+                        data: [{ value: 0 }]
+                    }
+                ]
+            };
+            myCharta.setOption(optionTimea);
+            //性能开动率
+            var myChartb = echarts.init(document.getElementById('mainb'));
+            optionTimeb = {
+                series: [
+                    {
+                        name: '业务指标',
+                        type: 'gauge',
+                        splitNumber: 10,       // 分割段数，默认为5
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                                width: 10
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            splitNumber: 10,   // 每份split细分多少段
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            show: true,        // 默认显示，属性show控制显示与否
+                            length: 30,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+
+                        detail: {
+                            formatter: '{value}%',
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto',
+                                fontWeight: 'bolder',
+                                fontSize: 20
+                            }
+                        },
+                        data: [{ value: 0 }]
+                    }
+                ]
+            };
+            myChartb.setOption(optionTimeb);
+            //OEE
+            var myChartc = echarts.init(document.getElementById('mainc'));
+            optionTimec = {
+                series: [
+                    {
+                        name: 'OEE',
+                        type: 'gauge',
+                        splitNumber: 10,       // 分割段数，默认为5
+                        axisLine: {            // 坐标轴线
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                                width: 10
+                            }
+                        },
+                        axisTick: {            // 坐标轴小标记
+                            splitNumber: 10,   // 每份split细分多少段
+                            length: 12,        // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle控制线条样式
+                                color: 'auto'
+                            }
+                        },
+                        axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto'
+                            }
+                        },
+                        splitLine: {           // 分隔线
+                            show: true,        // 默认显示，属性show控制显示与否
+                            length: 30,         // 属性length控制线长
+                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                color: 'auto'
+                            }
+                        },
+
+                        detail: {
+                            formatter: '{value}%',
+                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                color: 'auto',
+                                fontWeight: 'bolder',
+                                fontSize: 20
+                            }
+                        },
+                        data: [{ value: 0 }]
+                    }
+                ]
+            };
+            myChartc.setOption(optionTimec);
+            $.ajax({
+                url: "/MESReport/MESOEE/GetGridJson",
+                data: {
+                    dateStart: "",
+                    dateEnd: "",
+                    line: $("#Mes_Line").val()
+                },
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    if (data.rows.length == 0) { return; }
+                    //合格率
+                    optionTimed.series[0].data[0].value = data.rows[0].goodPer;
+                    myChartd.setOption(optionTimed, true);
+                    //时间开动率
+                    optionTimea.series[0].data[0].value = data.rows[0].timeWorkPer;
+                    myCharta.setOption(optionTimea, true);
+                    //性能开动率
+                    optionTimeb.series[0].data[0].value = data.rows[0].performancePer;
+                    myChartb.setOption(optionTimeb, true);
+                    //OEE
+                    optionTimec.series[0].data[0].value = data.rows[0].oee;
+                    myChartc.setOption(optionTimec, true);
+                }
+            })
+
+            //clearInterval(timeTicket);
+            //var timeTicket = setInterval(function () {
+            //    $.ajax({
+            //        url: "/MESReport/MESOEE/GetGridJson",
+            //        data: {
+            //            dateStart: "",
+            //            dateEnd: "",
+            //            line: $("#Mes_Line").val()
+            //        },
+            //        dataType: "json",
+            //        async: false,
+            //        success: function (data) {
+            //             //时间开动率
+            //            optionTimea.series[0].data[0].value = data.rows[0].timeWorkPer;
+            //            myCharta.setOption(optionTimea, true);
+            //            //性能开动率
+            //            optionTimeb.series[0].data[0].value = data.rows[0].performancePer;
+            //            myChartb.setOption(optionTimeb, true);
+            //            //OEE
+            //            optionTimec.series[0].data[0].value = data.rows[0].oee;
+            //            myChartc.setOption(optionTimec, true);
+            //        }
+            //    })
+            //}, 60*1000)
+        }
+    </script>
+</head>
+<body>
+    <div id="areascontent">
+        <div class="panel panel-default" style="margin-bottom: 10px;">
+            <div class="panel-heading">@*产线OEE实时监控*@
+                <div class="input-group" style="width:150px;margin-right:5px;">
+                    <select id="Mes_Line" name="Mes_Line" class="form-control"></select>
+                </div>
+            </div>
+            <div class="panel-body" style="padding: 0px;">
+                <div>
+                    <div id="maind" style="width: 25%; float: left; height: 250px;">3</div>
+                    <div id="maina" style="width: 25%; float: left; height: 250px;"></div>
+                    <div id="mainb" style="width: 25%; float: left; height: 250px;">2</div>
+                    <div id="mainc" style="width: 25%; float: left; height: 250px;">3</div>
+                </div>
+                <div style="position: relative; top: -20px;">
+                    <div style="width: 25%; float: left; text-align: center;">合格率</div>
+                    <div style="width: 25%; float: left; text-align: center;">时间开动率</div>
+                    <div style="width: 25%; float: left; text-align: center;">性能开动率</div>
+                    <div style="width: 25%; float: left; text-align: center;">OEE</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <style>
+        #copyrightcontent {
+            height: 30px;
+            line-height: 29px;
+            overflow: hidden;
+            position: absolute;
+            top: 100%;
+            margin-top: -30px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .dashboard-stats {
+            float: left;
+            width: 20%;
+        }
+
+        .dashboard-stats-item {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            cursor: pointer;
+            height: 105px;
+            margin-right: 25px;
+            margin-bottom: 10px;
+            padding: 20px 20px;
+        }
+
+        .dashboard-stats-item .m-top-none {
+            margin-top: 2px;
+        }
+
+        .dashboard-stats-item h2 {
+            font-size: 35px;
+            font-family: inherit;
+            line-height: 1.1;
+            font-weight: 500;
+        }
+
+        .dashboard-stats-item h5 {
+            font-size: 14px;
+            font-family: inherit;
+            margin-top: 3px;
+            line-height: 1.1;
+        }
+
+
+        .dashboard-stats-item .stat-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            opacity: .3;
+        }
+
+        .dashboard-stats i.fa.stats-icon {
+            width: 50px;
+            padding: 20px;
+            font-size: 50px;
+            text-align: center;
+            color: #fff;
+            height: 50px;
+            border-radius: 10px;
+        }
+
+        .panel-default {
+            border: none;
+            border-radius: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .panel-default > .panel-heading {
+            color: #777;
+            background-color: #fff;
+            border-color: #e6e6e6;
+            padding: 10px 10px;
+        }
+
+        .panel-default > .panel-body {
+            padding: 10px;
+            padding-bottom: 0px;
+        }
+
+    .panel-default > .panel-body ul {
+        overflow: hidden;
+        padding: 0;
+        margin:0px;margin-top: -5px;
+    }
+
+        .panel-default > .panel-body ul li {
+            line-height: 27px;
+            list-style-type: none;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .panel-default > .panel-body ul li .time {
+            color: #a1a1a1;
+            float: right;
+            padding-right: 5px;
+        }
+    </style>
+</body>
+</html>
