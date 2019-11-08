@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,7 +27,23 @@ namespace JJFWebCore
         // 使用此方法向容器添加服务
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddControllersAsServices(); //后面这一段用于autofac，不然不行
+
+            //有问题，这样不行，不知道哪里配置不对
+            //services.AddAutofac((container) =>
+            //{
+            //    var controllerBaseType = typeof(Microsoft.AspNetCore.Mvc.ControllerBase);
+            //    container.RegisterAssemblyTypes(typeof(Program).Assembly)
+            //        .Where(t => controllerBaseType.IsAssignableFrom(t) && t != controllerBaseType)
+            //        .InstancePerLifetimeScope().PropertiesAutowired();
+
+            //    string webService = "WebService";// ConfigurationManager.AppSettings["DllName"];
+            //    Assembly asmwebService = Assembly.Load(webService);
+            //    container.RegisterAssemblyTypes(asmwebService).InstancePerRequest().PropertiesAutowired();
+            //    string webDAO = "WebDao";// ConfigurationManager.AppSettings["DllName"];
+            //    Assembly asmwebDAO = Assembly.Load(webDAO);
+            //    container.RegisterAssemblyTypes(asmwebDAO).InstancePerRequest().PropertiesAutowired();
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,14 +71,34 @@ namespace JJFWebCore
 
             app.UseDeveloperExceptionPage();
 
-            app.UseAuthorization();
             app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Login}/{action=Index}/{id?}");
             });
+
+
+        }
+
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            //注册controller里面的service
+            var controllerBaseType = typeof(Microsoft.AspNetCore.Mvc.ControllerBase);
+            builder.RegisterAssemblyTypes(typeof(Program).Assembly)
+                .Where(t => controllerBaseType.IsAssignableFrom(t) && t != controllerBaseType)
+                .InstancePerLifetimeScope().PropertiesAutowired();
+
+            // 在这里添加服务注册
+            string webService = "WebService";// ConfigurationManager.AppSettings["DllName"];
+            Assembly asmwebService = Assembly.Load(webService);
+            builder.RegisterAssemblyTypes(asmwebService).InstancePerLifetimeScope().PropertiesAutowired();
+            string webDAO = "WebDao";// ConfigurationManager.AppSettings["DllName"];
+            Assembly asmwebDAO = Assembly.Load(webDAO);
+            builder.RegisterAssemblyTypes(asmwebDAO).InstancePerLifetimeScope().PropertiesAutowired();
         }
     }
 }

@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JJFWebCore", "JJFWebCore\JJFWebCore.csproj", "{ED5B3D22-7B89-430F-A45B-5C0B06A5C0CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JJFWebCore", "JJFWebCore\JJFWebCore.csproj", "{ED5B3D22-7B89-430F-A45B-5C0B06A5C0CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBase.csproj", "{4B037494-23AA-4DAA-8A34-E97F10E34058}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebModel", "WebModel\WebModel.csproj", "{6F99C471-D86C-41F5-B0D4-1D496BA2664D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService", "WebService\WebService.csproj", "{5473610E-DD0F-4A4C-A371-FB0D60B05DF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDao", "WebDao\WebDao.csproj", "{D6553819-5D55-4FBC-B6EB-D7E1CEB26AFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTools", "WebTools\WebTools.csproj", "{2E77883D-3879-45D9-98AD-73156B4BB4BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{ED5B3D22-7B89-430F-A45B-5C0B06A5C0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED5B3D22-7B89-430F-A45B-5C0B06A5C0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED5B3D22-7B89-430F-A45B-5C0B06A5C0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B037494-23AA-4DAA-8A34-E97F10E34058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B037494-23AA-4DAA-8A34-E97F10E34058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B037494-23AA-4DAA-8A34-E97F10E34058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B037494-23AA-4DAA-8A34-E97F10E34058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F99C471-D86C-41F5-B0D4-1D496BA2664D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F99C471-D86C-41F5-B0D4-1D496BA2664D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F99C471-D86C-41F5-B0D4-1D496BA2664D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F99C471-D86C-41F5-B0D4-1D496BA2664D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5473610E-DD0F-4A4C-A371-FB0D60B05DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5473610E-DD0F-4A4C-A371-FB0D60B05DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5473610E-DD0F-4A4C-A371-FB0D60B05DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5473610E-DD0F-4A4C-A371-FB0D60B05DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6553819-5D55-4FBC-B6EB-D7E1CEB26AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6553819-5D55-4FBC-B6EB-D7E1CEB26AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6553819-5D55-4FBC-B6EB-D7E1CEB26AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6553819-5D55-4FBC-B6EB-D7E1CEB26AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E77883D-3879-45D9-98AD-73156B4BB4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E77883D-3879-45D9-98AD-73156B4BB4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E77883D-3879-45D9-98AD-73156B4BB4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E77883D-3879-45D9-98AD-73156B4BB4BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
