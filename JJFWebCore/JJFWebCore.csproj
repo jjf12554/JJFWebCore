@@ -13,6 +13,7 @@
     <Folder Include="Filter\" />
     <Folder Include="Views\ClientsData\" />
     <Folder Include="Areas\" />
+    <Folder Include="wwwroot\upload\userImage\" />
   </ItemGroup>
 
 
@@ -35,6 +36,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebService\WebService.csproj" />
+    <ProjectReference Include="..\WebTools\WebTools.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using JJFWebCore.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -62,9 +63,9 @@ namespace JJFWebCore
             }
             app.UseHttpsRedirection(); //把 HTTP 重定向到 HTTPS
 
-            //app.UseWhen(
-            //    c => c.Request.Path.Value.Contains("assets"),
-            //    _ => _.UseMiddleware<AuthorizeStaticFilesMiddleware>()); //进行访问权限控制
+            app.UseWhen(
+                c => c.Request.Path.Value.Contains("upload"),
+                _ => _.UseMiddleware<AuthorizeStaticFilesMiddleware>()); //进行访问权限控制
             app.UseStaticFiles();      //使用静态文件
 
             app.UseCookiePolicy();　　 //与 Cookie 有关
