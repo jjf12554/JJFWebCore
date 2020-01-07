@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using JJFWebCore.Models;
 using WebService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JJFWebCore.Controllers
 {
@@ -36,8 +37,10 @@ namespace JJFWebCore.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public string Test()
         {
+            System.Threading.Thread.Sleep(1000 * 60);
             return testSevice.Test();
         }
     }

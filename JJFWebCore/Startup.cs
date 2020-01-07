@@ -8,6 +8,7 @@ using Autofac.Extensions.DependencyInjection;
 using JJFWebCore.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +30,7 @@ namespace JJFWebCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddControllersAsServices(); //后面这一段用于autofac，不然不行
-
+            services.AddJwtConfiguration(Configuration);  //JWT认证
             //有问题，这样不行，不知道哪里配置不对
             //services.AddAutofac((container) =>
             //{
